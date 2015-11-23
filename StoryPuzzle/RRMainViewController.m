@@ -6,13 +6,13 @@
 //  Copyright © 2015年 BitAuto. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RRMainViewController.h"
 
-@interface ViewController ()
+@interface RRMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation RRMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

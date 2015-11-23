@@ -1,0 +1,20 @@
+PODS:
+  - RRToolKit (1.0.1)
+
+DEPENDENCIES:
+  - RRToolKit (from `https://github.com/ringlong/RRToolKit.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  RRToolKit:
+    :branch: master
+    :git: https://github.com/ringlong/RRToolKit.git
+
+CHECKOUT OPTIONS:
+  RRToolKit:
+    :commit: b1b1fb2c748c19bdeed23c11bbceaece897dd377
+    :git: https://github.com/ringlong/RRToolKit.git
+
+SPEC CHECKSUMS:
+  RRToolKit: ee93e1ede69324506317ff44fdec7cf134c60714
+
+COCOAPODS: 0.39.0

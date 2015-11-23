@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E10B19E1972B72AA35F2828 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A28BCE2DE8A94F2D86035DD8 /* libPods.a */; };
+		26561F001C033B1E00DC29C5 /* RRImageKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 26561EFF1C033B1E00DC29C5 /* RRImageKit.m */; };
 		940006031BFF102E00D31956 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006021BFF102E00D31956 /* main.m */; };
 		940006061BFF102E00D31956 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006051BFF102E00D31956 /* AppDelegate.m */; };
-		940006091BFF102E00D31956 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006081BFF102E00D31956 /* ViewController.m */; };
+		940006091BFF102E00D31956 /* RRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006081BFF102E00D31956 /* RRMainViewController.m */; };
 		9400060C1BFF102E00D31956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9400060A1BFF102E00D31956 /* Main.storyboard */; };
 		9400060E1BFF102E00D31956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9400060D1BFF102E00D31956 /* Assets.xcassets */; };
 		940006111BFF102E00D31956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9400060F1BFF102E00D31956 /* LaunchScreen.storyboard */; };
@@ -17,18 +19,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26561EFE1C033B1E00DC29C5 /* RRImageKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRImageKit.h; sourceTree = "<group>"; };
+		26561EFF1C033B1E00DC29C5 /* RRImageKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRImageKit.m; sourceTree = "<group>"; };
+		5A372A2F4DE5E4840BE8B600 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		81687E859C7F6B81609394DE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		940005FE1BFF102E00D31956 /* StoryPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		940006021BFF102E00D31956 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		940006041BFF102E00D31956 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		940006051BFF102E00D31956 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		940006071BFF102E00D31956 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		940006081BFF102E00D31956 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		940006071BFF102E00D31956 /* RRMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRMainViewController.h; sourceTree = "<group>"; };
+		940006081BFF102E00D31956 /* RRMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRMainViewController.m; sourceTree = "<group>"; };
 		9400060B1BFF102E00D31956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9400060D1BFF102E00D31956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		940006101BFF102E00D31956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		940006121BFF102E00D31956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		940006181BFF17FF00D31956 /* RRImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRImageView.h; path = View/RRImageView.h; sourceTree = "<group>"; };
 		940006191BFF17FF00D31956 /* RRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRImageView.m; path = View/RRImageView.m; sourceTree = "<group>"; };
+		A28BCE2DE8A94F2D86035DD8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E10B19E1972B72AA35F2828 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73879BBD420847CB4889988D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A28BCE2DE8A94F2D86035DD8 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		940005F51BFF102E00D31956 = {
 			isa = PBXGroup;
 			children = (
 				940006001BFF102E00D31956 /* StoryPuzzle */,
 				940005FF1BFF102E00D31956 /* Products */,
+				E7F3A035DC0E317B15D3143C /* Pods */,
+				73879BBD420847CB4889988D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,11 +81,13 @@
 			children = (
 				940006041BFF102E00D31956 /* AppDelegate.h */,
 				940006051BFF102E00D31956 /* AppDelegate.m */,
-				940006071BFF102E00D31956 /* ViewController.h */,
-				940006081BFF102E00D31956 /* ViewController.m */,
+				940006071BFF102E00D31956 /* RRMainViewController.h */,
+				940006081BFF102E00D31956 /* RRMainViewController.m */,
 				9400060A1BFF102E00D31956 /* Main.storyboard */,
 				940006181BFF17FF00D31956 /* RRImageView.h */,
 				940006191BFF17FF00D31956 /* RRImageView.m */,
+				26561EFE1C033B1E00DC29C5 /* RRImageKit.h */,
+				26561EFF1C033B1E00DC29C5 /* RRImageKit.m */,
 				9400060D1BFF102E00D31956 /* Assets.xcassets */,
 				9400060F1BFF102E00D31956 /* LaunchScreen.storyboard */,
 				940006121BFF102E00D31956 /* Info.plist */,
@@ -84,6 +104,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E7F3A035DC0E317B15D3143C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81687E859C7F6B81609394DE /* Pods.debug.xcconfig */,
+				5A372A2F4DE5E4840BE8B600 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 940006151BFF102E00D31956 /* Build configuration list for PBXNativeTarget "StoryPuzzle" */;
 			buildPhases = (
+				277B87C83F8AA8A4C51F9933 /* Check Pods Manifest.lock */,
 				940005FA1BFF102E00D31956 /* Sources */,
 				940005FB1BFF102E00D31956 /* Frameworks */,
 				940005FC1BFF102E00D31956 /* Resources */,
+				6AD9D6E56FBE79C420F64398 /* Embed Pods Frameworks */,
+				61B1EF002C25A27413DB7EE9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,12 +181,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		277B87C83F8AA8A4C51F9933 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		61B1EF002C25A27413DB7EE9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AD9D6E56FBE79C420F64398 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		940005FA1BFF102E00D31956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940006091BFF102E00D31956 /* ViewController.m in Sources */,
+				940006091BFF102E00D31956 /* RRMainViewController.m in Sources */,
+				26561F001C033B1E00DC29C5 /* RRImageKit.m in Sources */,
 				940006061BFF102E00D31956 /* AppDelegate.m in Sources */,
 				9400061A1BFF17FF00D31956 /* RRImageView.m in Sources */,
 				940006031BFF102E00D31956 /* main.m in Sources */,
@@ -265,6 +346,7 @@
 		};
 		940006161BFF102E00D31956 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81687E859C7F6B81609394DE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StoryPuzzle/Info.plist;
@@ -276,6 +358,7 @@
 		};
 		940006171BFF102E00D31956 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A372A2F4DE5E4840BE8B600 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StoryPuzzle/Info.plist;
@@ -304,6 +387,7 @@
 				940006171BFF102E00D31956 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
