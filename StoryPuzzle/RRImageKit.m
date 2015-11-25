@@ -11,9 +11,9 @@
 @implementation RRImageKit
 
 + (NSArray<UIImage *> *)separateImage:(UIImage *)image byRows:(NSInteger)rows columns:(NSInteger)columns cacheQuality:(CGFloat)quality {
-    NSAssert(rows < 1, @"illegal row!");
-    NSAssert(columns < 1, @"illegal column");
-    NSAssert(![image isKindOfClass:[UIImage class]], @"illegal image format!");
+    NSAssert(rows >= 1, @"illegal row!");
+    NSAssert(columns >= 1, @"illegal column");
+    NSAssert([image isKindOfClass:[UIImage class]], @"illegal image format!");
     
     CGFloat xStep = image.size.width / columns;
     CGFloat yStep = image.size.height / rows;
