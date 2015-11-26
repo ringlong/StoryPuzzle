@@ -62,20 +62,16 @@ static const NSInteger RRImageViewColumnCount = 3;
 
 - (void)imageView:(UIImageView *)imageView changeWithDirection:(RRMoveDirection)direction {
     [UIView animateWithDuration:0.3f animations:^{
-//        switch (direction) {
-//            case RRMoveDirectionLeft:
-//                break;
-//            case RRMoveDirectionRight:
-//                imageView.frame = self.plactholder.frame;
-//                break;
-//            case RRMoveDirectionUp:
-//                break;
-//            case RRMoveDirectionDown:
-//                break;
-//            case RRMoveDirectionNone:
-//                break;
-//        }
-        [self changeFrameOfView:imageView withView:self.plactholder];
+        switch (direction) {
+            case RRMoveDirectionLeft:
+            case RRMoveDirectionRight:
+            case RRMoveDirectionUp:
+            case RRMoveDirectionDown:
+                [self changeFrameOfView:imageView withView:self.plactholder];
+                break;
+            case RRMoveDirectionNone:
+                break;
+        }
     }];
 }
 
@@ -95,18 +91,18 @@ static const NSInteger RRImageViewColumnCount = 3;
         direction = RRMoveDirectionRight;
     }
     
-    if (_plactholder.right == imageView.left - RRImageViewMagin &&
+    if (roundf(_plactholder.right) == roundf(imageView.left - RRImageViewMagin) &&
         _plactholder.top == imageView.top) {
         direction = RRMoveDirectionLeft;
     }
     
     if (_plactholder.left == imageView.left &&
-        _plactholder.top == imageView.bottom + RRImageViewMagin) {
+        roundf(_plactholder.top) == roundf(imageView.bottom + RRImageViewMagin)) {
         direction = RRMoveDirectionDown;
     }
     
     if (_plactholder.left == imageView.left &&
-        _plactholder.bottom == imageView.top - RRImageViewMagin) {
+        roundf(_plactholder.bottom) == roundf(imageView.top - RRImageViewMagin)) {
         direction = RRMoveDirectionUp;
     }
     
