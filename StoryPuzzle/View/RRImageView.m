@@ -12,6 +12,7 @@
 
 - (instancetype)initWithImage:(UIImage *)image {
     if (self = [super initWithImage:image]) {
+        self.contentMode = UIViewContentModeScaleToFill;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
         self.layer.borderColor = [UIColor lightTextColor].CGColor;

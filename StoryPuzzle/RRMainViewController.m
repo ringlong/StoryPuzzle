@@ -11,7 +11,7 @@
 #import "RRImageKit.h"
 #import "RRToolkit.h"
 
-static const CGFloat RRImageViewMagin = 5;
+static const CGFloat RRImageViewMagin = 0;
 
 static const NSInteger RRImageViewTag = 100;
 static const NSInteger RRImageViewRowCount = 3;
@@ -20,13 +20,12 @@ static const NSInteger RRImageViewColumnCount = 3;
 @interface RRMainViewController ()<RRImageViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (nonatomic, strong) UIImageView *templeImage;
+@property (nonatomic, strong) UIView *plactholder;
 @property (nonatomic, strong) RRImageView *imageView;
 
-- (void)upchange:(UIImageView *)image;
-- (void)leftchange:(UIImageView *)image;
-- (void)rightchange:(UIImageView *)image;
-- (void)downchange:(UIImageView *)image;
+- (void)imageView:(UIImageView *)imageView changeWithDirection:(RRMoveDirection)direction;
+
+- (void)changeFrameOfView:(UIView *)view withView:(UIView *)otherView;
 
 @end
 
@@ -40,6 +39,7 @@ static const NSInteger RRImageViewColumnCount = 3;
     NSArray<UIImage *> *imageList = [RRImageKit separateImage:[UIImage imageNamed:@"Sweat"] byRows:RRImageViewRowCount columns:RRImageViewColumnCount cacheQuality:1];
     [imageList enumerateObjectsUsingBlock:^(UIImage * _Nonnull image, NSUInteger idx, BOOL * _Nonnull stop) {
         RRImageView *itemImage = [[RRImageView alloc] initWithImage:image];
+        itemImage.delegate = self;
         itemImage.tag = RRImageViewTag + idx;
         
         NSInteger row = idx / RRImageViewColumnCount;
@@ -47,35 +47,70 @@ static const NSInteger RRImageViewColumnCount = 3;
         
         CGFloat width = (self.containerView.width - (RRImageViewColumnCount - 1) * RRImageViewMagin) / RRImageViewColumnCount;
         CGFloat height = (self.containerView.height - (RRImageViewRowCount - 1) * RRImageViewMagin) / RRImageViewRowCount;
-        
-        itemImage.frame = CGRectMake(row * (width + RRImageViewMagin), column * (height + RRImageViewMagin), width, height);
-        
-        [self.containerView addSubview:itemImage];
+        CGRect frame = CGRectMake(column * (width + RRImageViewMagin), row * (height + RRImageViewMagin), width, height);
+        if (idx != RRImageViewRowCount * RRImageViewColumnCount - 1) {
+            itemImage.frame = frame;
+            [self.containerView addSubview:itemImage];
+        } else {
+            self.plactholder = [[UIView alloc] initWithFrame:frame];
+            [self.containerView addSubview:self.plactholder];
+        }
     }];
 }
 
 #pragma mark - Private Methods
 
-- (void)upchange:(UIImageView *)image {
-    
+- (void)imageView:(UIImageView *)imageView changeWithDirection:(RRMoveDirection)direction {
+    [UIView animateWithDuration:0.3f animations:^{
+//        switch (direction) {
+//            case RRMoveDirectionLeft:
+//                break;
+//            case RRMoveDirectionRight:
+//                imageView.frame = self.plactholder.frame;
+//                break;
+//            case RRMoveDirectionUp:
+//                break;
+//            case RRMoveDirectionDown:
+//                break;
+//            case RRMoveDirectionNone:
+//                break;
+//        }
+        [self changeFrameOfView:imageView withView:self.plactholder];
+    }];
 }
 
-- (void)leftchange:(UIImageView *)image {
-    
-}
-
-- (void)rightchange:(UIImageView *)image {
-    
-}
-
-- (void)downchange:(UIImageView *)image {
-    
+- (void)changeFrameOfView:(UIView *)view withView:(UIView *)otherView {
+    CGRect frame = view.frame;
+    view.frame = otherView.frame;
+    otherView.frame = frame;
 }
 
 #pragma mark - RRImageViewDelegate
 
 - (void)moveAction:(UIImageView *)imageView {
+    RRMoveDirection direction = RRMoveDirectionNone;
     
+    if (roundf(_plactholder.left) == roundf(imageView.right + RRImageViewMagin) &&
+        _plactholder.top == imageView.top) {
+        direction = RRMoveDirectionRight;
+    }
+    
+    if (_plactholder.right == imageView.left - RRImageViewMagin &&
+        _plactholder.top == imageView.top) {
+        direction = RRMoveDirectionLeft;
+    }
+    
+    if (_plactholder.left == imageView.left &&
+        _plactholder.top == imageView.bottom + RRImageViewMagin) {
+        direction = RRMoveDirectionDown;
+    }
+    
+    if (_plactholder.left == imageView.left &&
+        _plactholder.bottom == imageView.top - RRImageViewMagin) {
+        direction = RRMoveDirectionUp;
+    }
+    
+    [self imageView:imageView changeWithDirection:direction];
 }
 
 @end
