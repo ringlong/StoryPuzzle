@@ -62,15 +62,8 @@ static const NSInteger RRImageViewColumnCount = 3;
 
 - (void)imageView:(UIImageView *)imageView changeWithDirection:(RRMoveDirection)direction {
     [UIView animateWithDuration:0.3f animations:^{
-        switch (direction) {
-            case RRMoveDirectionLeft:
-            case RRMoveDirectionRight:
-            case RRMoveDirectionUp:
-            case RRMoveDirectionDown:
-                [self changeFrameOfView:imageView withView:self.plactholder];
-                break;
-            case RRMoveDirectionNone:
-                break;
+        if (direction != RRMoveDirectionNone) {
+            [self changeFrameOfView:imageView withView:self.plactholder];
         }
     }];
 }
