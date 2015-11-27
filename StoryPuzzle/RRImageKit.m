@@ -7,10 +7,16 @@
 //
 
 #import "RRImageKit.h"
+#import "RRImageView.h"
+
+bool RRPositionEqualToPositon(RRPosition position1, RRPosition position2) {
+    return position1.xPosition == position2.xPosition && position1.yPosition == position2.yPosition;
+}
+
 
 @implementation RRImageKit
 
-+ (NSArray<UIImage *> *)separateImage:(UIImage *)image byRows:(NSInteger)rows columns:(NSInteger)columns cacheQuality:(CGFloat)quality {
++ (NSArray<RRImage *> *)separateImage:(UIImage *)image byRows:(NSInteger)rows columns:(NSInteger)columns cacheQuality:(CGFloat)quality {
     NSAssert(rows >= 1, @"illegal row!");
     NSAssert(columns >= 1, @"illegal column");
     NSAssert([image isKindOfClass:[UIImage class]], @"illegal image format!");
@@ -27,7 +33,7 @@
             CGRect rect = CGRectMake(xStep * j, yStep * i, xStep, yStep);
             CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
             
-            UIImage *elementImage = [UIImage imageWithCGImage:imageRef];
+            RRImage *elementImage = [RRImage imageWithCGImage:imageRef position:RRPositionMake(i, j)];
             
             NSString *imageKey = [NSString stringWithFormat:@"%@_%@_%@.png", prefixName, @(i), @(j)];
             CFRelease(imageRef);
@@ -48,6 +54,51 @@
     
     NSArray *array = [NSArray arrayWithArray:mutableArray];
     return array;
+}
+
++ (NSArray<RRImage *> *)radomImageListWithOriginalImageList:(NSArray<RRImage *> *)originalImageList {
+    NSMutableArray *tempList = [NSMutableArray arrayWithArray:originalImageList];
+    for (NSInteger i = 0; i < originalImageList.count; i++) {
+        u_int32_t randomIndex = arc4random_uniform((u_int32_t)originalImageList.count);
+        RRImage *randomImage = tempList[randomIndex];
+        [tempList removeObjectAtIndex:randomIndex];
+        [tempList addObject:randomImage];
+    }
+    NSArray *radomImageList = [NSArray arrayWithArray:tempList];
+    return radomImageList;
+}
+
++ (BOOL)isInOrderImageList:(NSArray<RRImageView *> *)imageList
+              withOriginal:(NSArray<RRImage *> *)original {
+    if (imageList.count != original.count) {
+        return NO;
+    }
+    for (NSInteger i = 0; i < original.count; i++) {
+        if (!RRPositionEqualToPositon(imageList[i].rrImage.position, original[i].position)) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+@end
+
+
+@implementation RRImage
+
+- (instancetype)initWithCGImage:(CGImageRef)cgImage position:(RRPosition)position {
+    if (self = [super initWithCGImage:cgImage]) {
+        self.position = position;
+    }
+    return self;
+}
+
++ (RRImage *)imageWithImage:(UIImage *)image position:(RRPosition)position {
+    return [[RRImage alloc] initWithCGImage:image.CGImage position:position];
+}
+
++ (RRImage *)imageWithCGImage:(CGImageRef)cgImage position:(RRPosition)position {
+    return [[self alloc] initWithCGImage:cgImage position:position];
 }
 
 @end

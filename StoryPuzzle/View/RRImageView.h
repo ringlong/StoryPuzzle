@@ -14,8 +14,11 @@
 
 @end
 
+@class RRImage;
+
 @interface RRImageView : UIImageView
 
+@property (nonatomic, strong) RRImage *rrImage;
 @property (nonatomic, weak) id<RRImageViewDelegate> delegate;
 
 @end

@@ -12,6 +12,7 @@
 
 - (instancetype)initWithImage:(UIImage *)image {
     if (self = [super initWithImage:image]) {
+        self.rrImage = (RRImage *)image;
         self.contentMode = UIViewContentModeScaleToFill;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
