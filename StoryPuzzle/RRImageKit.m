@@ -59,10 +59,10 @@ bool RRPositionEqualToPositon(RRPosition position1, RRPosition position2) {
 + (NSArray<RRImage *> *)radomImageListWithOriginalImageList:(NSArray<RRImage *> *)originalImageList {
     NSMutableArray *tempList = [NSMutableArray arrayWithArray:originalImageList];
     for (NSInteger i = 0; i < originalImageList.count; i++) {
-        u_int32_t randomIndex = arc4random_uniform((u_int32_t)originalImageList.count);
+        u_int32_t randomIndex = arc4random_uniform((u_int32_t)originalImageList.count - 1);
         RRImage *randomImage = tempList[randomIndex];
         [tempList removeObjectAtIndex:randomIndex];
-        [tempList addObject:randomImage];
+        [tempList insertObject:randomImage atIndex:originalImageList.count - 2];
     }
     NSArray *radomImageList = [NSArray arrayWithArray:tempList];
     return radomImageList;
