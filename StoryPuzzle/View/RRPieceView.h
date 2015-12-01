@@ -18,7 +18,7 @@
 
 @property (nonatomic, weak) id<RRPieceViewDelegate> delegate;
 
-@property (nonatomic, strong) NSArray *edges;
+@property (nonatomic, strong) NSArray<NSNumber *> *edges;
 @property (nonatomic, strong) NSArray *neighbors;
 
 @property (nonatomic, strong) UIImage *image;

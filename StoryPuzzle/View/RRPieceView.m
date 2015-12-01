@@ -68,8 +68,32 @@
 }
 
 #pragma mark - Drawing
+#define CO_PADDING 0
 
 - (void)drawRect:(CGRect)rect {
+    //TODO: delegate
+    _padding = self.width * 0.15;
+    CGFloat lineWidth = self.width * 0.005;
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextSetRGBStrokeColor(ctx, 0, 0, 0, 0.2);
+    CGContextSetLineWidth(ctx, lineWidth);
+    CGContextSetLineJoin(ctx, kCGLineJoinRound);
+    
+    CGContextBeginPath(ctx);
+    CGContextMoveToPoint(ctx, self.padding, self.padding);
+    
+    [_edges enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self drawEdgeNumber:idx + 1 ofEdge:obj.integerValue inContext:ctx];
+    }];
+    
+    CGContextClip(ctx);
+    [_image drawInRect:self.bounds];
+    
+    CGContextBeginPath(ctx);
+    CGContextDrawPath(ctx, kCGPathStroke);
+    
+    //TODO: delegate
 }
 
 - (void)drawEdgeNumber:(NSInteger)number ofEdge:(NSInteger)edge inContext:(CGContextRef)ctx {
@@ -105,6 +129,89 @@
         default:
             break;
     }
+    
+    if (edge < 0) {
+        sign *= -1;
+    }
+    
+    CGFloat l = vertical ? self.height : self.width;
+    CGFloat l3 = (l - 2 * self.padding) / 3;
+    
+    CGPoint point = [self pointA:a plusPointB:b firstWeight:2.0 / 3.0];
+    CGContextAddLineToPoint(ctx, point.x, point.y);
+    
+    NSInteger absEdge = abs(edge);
+    if (absEdge == 1) {
+        // Triangle
+        CGPoint p2 = [self pointA:a plusPointB:b firstWeight:1.0 / 2.0];
+    
+        if (vertical) {
+            p2 = [self pointA:p2 plusPointB:CGPointMake(0, sign * (_padding - CO_PADDING))];
+        } else {
+            p2 = [self pointA:p2 plusPointB:CGPointMake(sign * (_padding - CO_PADDING), 0)];
+        }
+        CGContextAddLineToPoint(ctx, p2.x, p2.y);
+        
+        CGPoint p3 = [self pointA:a plusPointB:b firstWeight:1.0 / 3.0];
+        CGContextAddLineToPoint(ctx, p3.x, p3.y);
+    } else if (absEdge == 2) {
+        CGPoint p2 = [self pointA:a plusPointB:b firstWeight:1.0 / 2.0];
+        CGFloat radius = (l - 2 * _padding) / 6;
+        switch (number) {
+            case 1:
+                CGContextAddArc(ctx, p2.x, p2.y, radius, M_PI, 0, sign + 1);
+                break;
+            case 2:
+                CGContextAddArc(ctx, p2.x, p2.y, radius, M_PI_2 * 3, M_PI_2, sign - 1);
+                break;
+            case 3:
+                CGContextAddArc(ctx, p2.x, p2.y, radius, 0, M_PI, sign - 1);
+                break;
+            case 4:
+                CGContextAddArc(ctx, p2.x, p2.y, radius, M_PI_2, M_PI_2 * 3, sign + 1);
+                break;
+            default:
+                break;
+        }
+    } else if (absEdge == 3) {
+        CGPoint p2 = point;
+        CGPoint p3 = point;
+        CGPoint p4 = point;
+        
+        switch (number) {
+            case 1:
+                p2 = [self pointA:p2 plusPointB:CGPointMake(0, sign * (_padding - CO_PADDING))];
+                p3 = [self pointA:p2 plusPointB:CGPointMake(l3, 0)];
+                p4 = [self pointA:point plusPointB:CGPointMake(l3, 0)];
+                break;
+            case 2:
+                p2 = [self pointA:p2 plusPointB:CGPointMake(sign * (_padding - CO_PADDING), 0)];
+                p3 = [self pointA:p2 plusPointB:CGPointMake(0, l3)];
+                p4 = [self pointA:point plusPointB:CGPointMake(0, l3)];
+                break;
+            case 3:
+                p2 = [self pointA:p2 plusPointB:CGPointMake(0, sign * (_padding - CO_PADDING))];
+                p3 = [self pointA:p2 plusPointB:CGPointMake(-l3, 0)];
+                p3 = [self pointA:point plusPointB:CGPointMake(-l3, 0)];
+                break;
+            case 4:
+                p2 = [self pointA:p2 plusPointB:CGPointMake(sign * (_padding - CO_PADDING), 0)];
+                p3 = [self pointA:p2 plusPointB:CGPointMake(0, -l3)];
+                p4 = [self pointA:point plusPointB:CGPointMake(0, -l3)];
+                break;
+            default:
+                break;
+        }
+        
+        CGContextAddLineToPoint(ctx, p2.x, p2.y);
+        CGContextAddLineToPoint(ctx, p3.x, p3.y);
+        CGContextAddLineToPoint(ctx, p4.x, p4.y);
+    } else {
+        point = [self pointA:a plusPointB:b firstWeight:1.0 / 3.0];
+        CGContextAddLineToPoint(ctx, point.x, point.y);
+    }
+    
+    CGContextAddLineToPoint(ctx, b.x, b.y);
 }
 
 #pragma mark - Gesture Hanlding
@@ -153,6 +260,15 @@
         result = 0;
     }
     return result;
+}
+
+- (void)moveNeighborhoodExcludingPieces:(NSMutableArray *)excluded {
+    [_neighbors enumerateObjectsUsingBlock:^(NSNumber  _Nonnull *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //TODO:delegate
+        for (RRPieceView *piece in excluded) {
+            
+        }
+    }];
 }
 
 #pragma mark - Gesture Method
