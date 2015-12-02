@@ -18,60 +18,60 @@
 @interface NSDate (RRAdditions)
 
 // Relative dates from the current date
-+ (NSDate *) dateTomorrow;
-+ (NSDate *) dateYesterday;
-+ (NSDate *) dateWithDaysFromNow: (NSInteger) days;
-+ (NSDate *) dateWithDaysBeforeNow: (NSInteger) days;
-+ (NSDate *) dateWithHoursFromNow: (NSInteger) dHours;
-+ (NSDate *) dateWithHoursBeforeNow: (NSInteger) dHours;
-+ (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes;
-+ (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes;
-+ (NSDate *) dateByDateString: (NSString *) dateString withFormatString: (NSString *) formatString;
++ (NSDate *)dateTomorrow;
++ (NSDate *)dateYesterday;
++ (NSDate *)dateWithDaysFromNow:(NSInteger)days;
++ (NSDate *)dateWithDaysBeforeNow:(NSInteger)days;
++ (NSDate *)dateWithHoursFromNow:(NSInteger)dHours;
++ (NSDate *)dateWithHoursBeforeNow:(NSInteger)dHours;
++ (NSDate *)dateWithMinutesFromNow:(NSInteger)dMinutes;
++ (NSDate *)dateWithMinutesBeforeNow:(NSInteger)dMinutes;
++ (NSDate *)dateByDateString:(NSString *)dateString withFormatString:(NSString *)formatString;
 
 // Comparing dates
-- (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
-- (BOOL) isToday;
-- (BOOL) isTomorrow;
-- (BOOL) isYesterday;
-- (BOOL) isSameWeekAsDate: (NSDate *) aDate;
-- (BOOL) isThisWeek;
-- (BOOL) isNextWeek;
-- (BOOL) isLastWeek;
-- (BOOL) isSameMonthAsDate: (NSDate *) aDate;
-- (BOOL) isThisMonth;
-- (BOOL) isSameYearAsDate: (NSDate *) aDate;
-- (BOOL) isThisYear;
-- (BOOL) isNextYear;
-- (BOOL) isLastYear;
-- (BOOL) isEarlierThanDate: (NSDate *) aDate;
-- (BOOL) isLaterThanDate: (NSDate *) aDate;
-- (BOOL) isInFuture;
-- (BOOL) isInPast;
+- (BOOL)isEqualToDateIgnoringTime:(NSDate *)aDate;
+- (BOOL)isToday;
+- (BOOL)isTomorrow;
+- (BOOL)isYesterday;
+- (BOOL)isSameWeekAsDate:(NSDate *)aDate;
+- (BOOL)isThisWeek;
+- (BOOL)isNextWeek;
+- (BOOL)isLastWeek;
+- (BOOL)isSameMonthAsDate:(NSDate *)aDate;
+- (BOOL)isThisMonth;
+- (BOOL)isSameYearAsDate:(NSDate *)aDate;
+- (BOOL)isThisYear;
+- (BOOL)isNextYear;
+- (BOOL)isLastYear;
+- (BOOL)isEarlierThanDate:(NSDate *)aDate;
+- (BOOL)isLaterThanDate:(NSDate *)aDate;
+- (BOOL)isInFuture;
+- (BOOL)isInPast;
 
 // Date roles
-- (BOOL) isTypicallyWorkday;
-- (BOOL) isTypicallyWeekend;
+- (BOOL)isTypicallyWorkday;
+- (BOOL)isTypicallyWeekend;
 
 // Adjusting dates
-- (NSDate *) dateByAddingDays: (NSInteger) dDays;
-- (NSDate *) dateBySubtractingDays: (NSInteger) dDays;
-- (NSDate *) dateByAddingHours: (NSInteger) dHours;
-- (NSDate *) dateBySubtractingHours: (NSInteger) dHours;
-- (NSDate *) dateByAddingMinutes: (NSInteger) dMinutes;
-- (NSDate *) dateBySubtractingMinutes: (NSInteger) dMinutes;
-- (NSDate *) dateAtStartOfDay;
+- (NSDate *)dateByAddingDays:(NSInteger)dDays;
+- (NSDate *)dateBySubtractingDays:(NSInteger)dDays;
+- (NSDate *)dateByAddingHours:(NSInteger)dHours;
+- (NSDate *)dateBySubtractingHours:(NSInteger)dHours;
+- (NSDate *)dateByAddingMinutes:(NSInteger)dMinutes;
+- (NSDate *)dateBySubtractingMinutes:(NSInteger)dMinutes;
+- (NSDate *)dateAtStartOfDay;
 
 // Retrieving intervals
-- (NSInteger) minutesAfterDate: (NSDate *) aDate;
-- (NSInteger) minutesBeforeDate: (NSDate *) aDate;
-- (NSInteger) hoursAfterDate: (NSDate *) aDate;
-- (NSInteger) hoursBeforeDate: (NSDate *) aDate;
-- (NSInteger) daysAfterDate: (NSDate *) aDate;
-- (NSInteger) daysBeforeDate: (NSDate *) aDate;
-- (NSInteger) distanceInDaysToDate:(NSDate *)anotherDate;
+- (NSInteger)minutesAfterDate:(NSDate *)aDate;
+- (NSInteger)minutesBeforeDate:(NSDate *)aDate;
+- (NSInteger)hoursAfterDate:(NSDate *)aDate;
+- (NSInteger)hoursBeforeDate:(NSDate *)aDate;
+- (NSInteger)daysAfterDate:(NSDate *)aDate;
+- (NSInteger)daysBeforeDate:(NSDate *)aDate;
+- (NSInteger)distanceInDaysToDate:(NSDate *)anotherDate;
 
 // Convert to string
-- (NSString *) stringByFormatString:(NSString *)formatString;
+- (NSString *)stringByFormatString:(NSString *)formatString;
 
 // Decomposing dates
 @property (readonly) NSInteger nearestHour;

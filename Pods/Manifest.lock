@@ -1,7 +1,15 @@
 PODS:
-  - RRToolKit (1.0.1)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - RRToolKit (1.0.2)
 
 DEPENDENCIES:
+  - ReactiveCocoa (~> 2.5)
   - RRToolKit (from `https://github.com/ringlong/RRToolKit.git`, branch `master`)
 
 EXTERNAL SOURCES:
@@ -11,10 +19,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   RRToolKit:
-    :commit: b1b1fb2c748c19bdeed23c11bbceaece897dd377
+    :commit: 85140c4097f3712f28dcbbfba55776b2e162560d
     :git: https://github.com/ringlong/RRToolKit.git
 
 SPEC CHECKSUMS:
-  RRToolKit: ee93e1ede69324506317ff44fdec7cf134c60714
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RRToolKit: dcddb7135431f44f1288f4d4750c524ea081e0f9
 
 COCOAPODS: 0.39.0
