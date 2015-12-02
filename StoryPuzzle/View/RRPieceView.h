@@ -8,18 +8,35 @@
 
 @import UIKit;
 
+@class RRPieceView;
 @protocol RRPieceViewDelegate <NSObject>
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+
+- (void)pieceViewMoved:(RRPieceView *)pieceView;
+//- (void)toggleImageWithDuration:(NSTimeInterval)duration;
+//- (void)drawerStoppedShouldBeStopped;
+
+@end
+
+@protocol RRPieceViewDataSource <NSObject>
+
+@required
+- (NSInteger)numberOfSquare;
+- (RRPieceView *)pieceViewWithNumber:(NSInteger)number;
+- (NSArray<RRPieceView *> *)pieces;
+- (UIImageView *)imageView;
+- (BOOL)drawerStopped;
 
 @end
 
 @interface RRPieceView : UIView<RRPieceViewDelegate>
 
 @property (nonatomic, weak) id<RRPieceViewDelegate> delegate;
+@property (nonatomic, weak) id<RRPieceViewDataSource> dataSource;
 
 @property (nonatomic, strong) NSArray<NSNumber *> *edges;
-@property (nonatomic, strong) NSArray *neighbors;
+@property (nonatomic, strong) NSArray<NSNumber *> *neighbors;
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIView *centerView;

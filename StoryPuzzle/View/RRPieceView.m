@@ -34,6 +34,72 @@
     [self configure];
 }
 
+#pragma mark - Pubulic Methods
+
+- (CGPoint)realCenter {
+    return CGPointMake(self.left + self.width / 2, self.top + self.height / 2);
+}
+
+- (NSInteger)edgeNumber:(NSInteger)number {
+    return _edges[number].integerValue;
+}
+
+- (void)setNeighborNumber:(NSInteger)neighborNumber forEdge:(NSInteger)edge {
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:4];
+    for (NSInteger i = 0; i < 4; i++) {
+        if (i == edge) {
+            [tempArray addObject:@(neighborNumber)];
+        } else {
+            [tempArray addObject:_neighbors[i]];
+        }
+    }
+    _neighbors = [NSArray arrayWithArray:tempArray];
+    _hasNeighbors = YES;
+}
+
+- (BOOL)isCompleted {
+    for (NSNumber *number in self.neighbors) {
+        if (number.integerValue == [_dataSource numberOfSquare]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (NSArray *)allTheNeighborsButExcluded:(NSMutableArray *)excluded {
+    if (!excluded) {
+        excluded = [NSMutableArray array];
+    }
+    [excluded addObject:self];
+    
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:[_dataSource numberOfSquare] - 1];
+    
+    [_neighbors enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.integerValue < [_dataSource numberOfSquare]) {
+            RRPieceView *otherPieceView = [_dataSource pieceViewWithNumber:obj.integerValue];
+            
+            BOOL present = NO;
+            
+            for (RRPieceView *pieceView in excluded) {
+                if (otherPieceView.number == pieceView.number) {
+                    present = YES;
+                }
+            }
+            
+            if (!present) {
+                [tempArray addObject:otherPieceView];
+            }
+        }
+    }];
+    [excluded addObjectsFromArray:tempArray];
+    
+    for (RRPieceView *p in tempArray.mutableCopy) {
+        [tempArray addObjectsFromArray:[p allTheNeighborsButExcluded:excluded]];
+    }
+    
+    return [NSArray arrayWithArray:tempArray];
+}
+
 #pragma mark - Private Methods
 
 - (void)configure {
@@ -98,7 +164,7 @@
 
 - (void)drawEdgeNumber:(NSInteger)number ofEdge:(NSInteger)edge inContext:(CGContextRef)ctx {
     BOOL vertical = NO;
-    NSInteger sign = 1;
+    int sign = 1;
     
     CGPoint a = CGPointZero;
     CGPoint b = CGPointZero;
@@ -140,7 +206,7 @@
     CGPoint point = [self pointA:a plusPointB:b firstWeight:2.0 / 3.0];
     CGContextAddLineToPoint(ctx, point.x, point.y);
     
-    NSInteger absEdge = abs(edge);
+    NSInteger absEdge = ABS(edge);
     if (absEdge == 1) {
         // Triangle
         CGPoint p2 = [self pointA:a plusPointB:b firstWeight:1.0 / 2.0];
@@ -262,13 +328,42 @@
     return result;
 }
 
-- (void)moveNeighborhoodExcludingPieces:(NSMutableArray *)excluded {
-    [_neighbors enumerateObjectsUsingBlock:^(NSNumber  _Nonnull *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        //TODO:delegate
-        for (RRPieceView *piece in excluded) {
+- (void)moveNeighborhoodExcludingPieces:(NSMutableArray *)excluded withVector:(CGPoint)traslation {
+    [_neighbors enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.integerValue < [_dataSource numberOfSquare]) {
+            RRPieceView *pieceView = [_dataSource pieceViewWithNumber:obj.integerValue];
+            BOOL present = NO;
             
+            for (RRPieceView *piece in excluded) {
+                if (piece == pieceView) {
+                    present = YES;
+                }
+            }
+            
+            if (!present) {
+                [pieceView translateWithVector:traslation];
+                [excluded addObject:pieceView];
+                [pieceView moveNeighborhoodExcludingPieces:excluded withVector:traslation];
+                if ([_delegate respondsToSelector:@selector(pieceViewMoved:)] &&
+                    CGPointEqualToPoint(traslation, CGPointZero)) {
+                    [_delegate pieceViewMoved:pieceView];
+                }
+            }
         }
     }];
+}
+
+- (void)moveNeighborhoodExcludingPieces:(NSMutableArray *)excluded {
+    [self moveNeighborhoodExcludingPieces:excluded withVector:CGPointZero];
+}
+
+- (BOOL)areTherePiecesBeingRotated {
+    for (RRPieceView *pieceView in [_dataSource pieces]) {
+        if (pieceView.isRotating && !pieceView.isFree) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 #pragma mark - Gesture Method
@@ -277,6 +372,32 @@
     if (!self.userInteractionEnabled) {
         return;
     }
+    if ([_dataSource imageView].alpha == 1) {
+//        [_delegate toggleImageWithDuration:0.5];
+    }
+//    CGPoint traslation = [gesture translationInView:self.superview];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [self.superview bringSubviewToFront:self];
+        _oldPosition = [self realCenter];
+        _tr = 0;
+        //TODO:drawerStopped
+    }
+    
+    if (_isFree || _isLifted) {
+//        NSMutableArray *excluded = @[self].mutableCopy;
+        //TODO: group
+        
+        [gesture setTranslation:CGPointZero inView:self.superview];
+        
+        if (gesture.state == UIGestureRecognizerStateEnded) {
+            //TODO:group
+        }
+    } else {
+        // Inside the Drawer
+        
+    }
+    
 }
 
 - (void)rotate:(UIRotationGestureRecognizer *)gesture {

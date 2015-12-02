@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="148.5" y="428.5"/>
         </scene>
-        <!--View Controller-->
+        <!--New Game Controller-->
         <scene sceneID="7HR-zh-LdT">
             <objects>
-                <viewController id="24Y-aw-M0g" sceneMemberID="viewController">
+                <viewController id="24Y-aw-M0g" customClass="NewGameController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2QM-zR-zJz"/>
                         <viewControllerLayoutGuide type="bottom" id="aRG-eh-fYt"/>
@@ -71,10 +71,121 @@
                     <view key="view" contentMode="scaleToFill" id="6ui-wI-OYQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pieces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-11-8EV">
+                                <rect key="frame" x="20" y="20" width="109" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-Jg-WKY">
+                                <rect key="frame" x="214" y="20" width="141" height="51"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fCv-Ug-kVK">
+                                <rect key="frame" x="67" y="270" width="240" height="209"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <state key="normal" title="TAP TO SELECT YOUR IMAGE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapToSelectImage:" destination="24Y-aw-M0g" eventType="touchUpInside" id="bXb-zt-io0"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6D6-HG-bT2">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <animations/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nf8-jo-Ak3">
+                                <rect key="frame" x="67" y="270" width="240" height="209"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ejU-L6-Wfb">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="209"/>
+                                        <animations/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKR-FF-Zek">
+                                        <rect key="frame" x="48" y="22" width="145" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <state key="normal" title="Your Photos">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectImageFromLibrary:" destination="24Y-aw-M0g" eventType="touchUpInside" id="qv1-aj-gNP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCT-vK-Bgn">
+                                        <rect key="frame" x="36" y="84" width="168" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <state key="normal" title="Puzzle Library">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectImageFromLibrary:" destination="24Y-aw-M0g" eventType="touchUpInside" id="bH8-61-0hA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQ4-x1-fKk">
+                                        <rect key="frame" x="73" y="147" width="94" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <state key="normal" title="Camera">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectImageFromLibrary:" destination="24Y-aw-M0g" eventType="touchUpInside" id="uw8-25-7eE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4j-8r-4pM">
+                                <rect key="frame" x="36" y="603" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="24Y-aw-M0g" eventType="touchUpInside" id="u2t-es-WC3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqf-MB-yar">
+                                <rect key="frame" x="309" y="603" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="gameStarted:" destination="24Y-aw-M0g" eventType="touchUpInside" id="Sx6-Ax-dQj"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="goB-do-4rF">
+                                <rect key="frame" x="23" y="84" width="329" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="numberSelected:" destination="24Y-aw-M0g" eventType="valueChanged" id="MfX-kf-twO"/>
+                                </connections>
+                            </slider>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-8X-qKc">
+                                <rect key="frame" x="67" y="537" width="240" height="2"/>
+                                <animations/>
+                            </progressView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="ejU-L6-Wfb" id="cGf-6B-poN"/>
+                        <outlet property="indicator" destination="6D6-HG-bT2" id="rj8-um-I3K"/>
+                        <outlet property="piecesNumberLabel" destination="Lsx-Jg-WKY" id="gKj-xR-8rr"/>
+                        <outlet property="progressView" destination="k7t-8X-qKc" id="azz-oL-qgc"/>
+                        <outlet property="tapToSelectButton" destination="fCv-Ug-kVK" id="IcW-AA-OPt"/>
+                        <outlet property="typeOfImageView" destination="Nf8-jo-Ak3" id="UU0-lg-wfG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pq2-17-j3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
