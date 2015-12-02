@@ -8,7 +8,7 @@
 
 #import "NewGameController.h"
 
-@interface NewGameController ()
+@interface NewGameController ()<UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *piecesNumberLabel;
 @property (weak, nonatomic) IBOutlet UIView *typeOfImageView;
@@ -17,13 +17,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *tapToSelectButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+@property (strong, nonatomic) NSTimer *timer;
+
 @end
 
 @implementation NewGameController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +35,7 @@
 #pragma mark - IBActions
 
 - (IBAction)numberSelected:(UISlider *)sender {
+    self.piecesNumberLabel.text = @((NSInteger)sqrtf(sender.value)).stringValue;
 }
 
 - (IBAction)gameStarted:(UIButton *)sender {
