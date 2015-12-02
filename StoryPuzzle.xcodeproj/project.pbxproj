@@ -10,6 +10,14 @@
 		0E10B19E1972B72AA35F2828 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A28BCE2DE8A94F2D86035DD8 /* libPods.a */; };
 		26561F001C033B1E00DC29C5 /* RRImageKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 26561EFF1C033B1E00DC29C5 /* RRImageKit.m */; };
 		2657CD2B1C0C842D00EB5E53 /* RRPieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2657CD2A1C0C842D00EB5E53 /* RRPieceView.m */; };
+		26938AC21C0F3173007365F3 /* PuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938AC11C0F3173007365F3 /* PuzzleViewController.m */; };
+		26938AC51C0F34F3007365F3 /* StoryPuzzle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26938AC31C0F34F3007365F3 /* StoryPuzzle.xcdatamodeld */; };
+		26938AD31C0F3954007365F3 /* Piece+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938AC81C0F3954007365F3 /* Piece+CoreDataProperties.m */; };
+		26938AD41C0F3954007365F3 /* Piece.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938ACA1C0F3954007365F3 /* Piece.m */; };
+		26938AD51C0F3954007365F3 /* Puzzle+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938ACC1C0F3954007365F3 /* Puzzle+CoreDataProperties.m */; };
+		26938AD61C0F3954007365F3 /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938ACE1C0F3954007365F3 /* Puzzle.m */; };
+		26938AD71C0F3954007365F3 /* Image+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938AD01C0F3954007365F3 /* Image+CoreDataProperties.m */; };
+		26938AD81C0F3954007365F3 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 26938AD21C0F3954007365F3 /* Image.m */; };
 		940006031BFF102E00D31956 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006021BFF102E00D31956 /* main.m */; };
 		940006061BFF102E00D31956 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006051BFF102E00D31956 /* AppDelegate.m */; };
 		940006091BFF102E00D31956 /* RRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006081BFF102E00D31956 /* RRMainViewController.m */; };
@@ -19,11 +27,6 @@
 		9400061A1BFF17FF00D31956 /* RRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006191BFF17FF00D31956 /* RRImageView.m */; };
 		942BB0CA1C0EDB300024232F /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BB0C91C0EDB300024232F /* NewGameController.m */; };
 		9462D9731C0EC7D100D13927 /* RRGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9721C0EC7D100D13927 /* RRGroupView.m */; };
-		9462D9791C0ECCF800D13927 /* GroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9761C0ECCF800D13927 /* GroupView.m */; };
-		9462D97A1C0ECCF800D13927 /* PieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9781C0ECCF800D13927 /* PieceView.m */; };
-		9462D97D1C0ECDCF00D13927 /* Lattice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D97C1C0ECDCF00D13927 /* Lattice.m */; };
-		9462D9811C0ECE0F00D13927 /* PuzzleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D97F1C0ECE0F00D13927 /* PuzzleController.m */; };
-		9462D9821C0ECE0F00D13927 /* PuzzleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462D9801C0ECE0F00D13927 /* PuzzleController.xib */; };
 		9462D9851C0ECE5500D13927 /* UIImage+CWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9841C0ECE5500D13927 /* UIImage+CWAdditions.m */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,21 @@
 		26561EFF1C033B1E00DC29C5 /* RRImageKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRImageKit.m; sourceTree = "<group>"; };
 		2657CD291C0C842D00EB5E53 /* RRPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRPieceView.h; path = View/RRPieceView.h; sourceTree = "<group>"; };
 		2657CD2A1C0C842D00EB5E53 /* RRPieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRPieceView.m; path = View/RRPieceView.m; sourceTree = "<group>"; };
+		26938AC01C0F3173007365F3 /* PuzzleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleViewController.h; sourceTree = "<group>"; };
+		26938AC11C0F3173007365F3 /* PuzzleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleViewController.m; sourceTree = "<group>"; };
+		26938AC41C0F34F3007365F3 /* StoryPuzzle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoryPuzzle.xcdatamodel; sourceTree = "<group>"; };
+		26938AC71C0F3954007365F3 /* Piece+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Piece+CoreDataProperties.h"; path = "Core Data Models/Piece+CoreDataProperties.h"; sourceTree = "<group>"; };
+		26938AC81C0F3954007365F3 /* Piece+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Piece+CoreDataProperties.m"; path = "Core Data Models/Piece+CoreDataProperties.m"; sourceTree = "<group>"; };
+		26938AC91C0F3954007365F3 /* Piece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Piece.h; path = "Core Data Models/Piece.h"; sourceTree = "<group>"; };
+		26938ACA1C0F3954007365F3 /* Piece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Piece.m; path = "Core Data Models/Piece.m"; sourceTree = "<group>"; };
+		26938ACB1C0F3954007365F3 /* Puzzle+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Puzzle+CoreDataProperties.h"; path = "Core Data Models/Puzzle+CoreDataProperties.h"; sourceTree = "<group>"; };
+		26938ACC1C0F3954007365F3 /* Puzzle+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Puzzle+CoreDataProperties.m"; path = "Core Data Models/Puzzle+CoreDataProperties.m"; sourceTree = "<group>"; };
+		26938ACD1C0F3954007365F3 /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Puzzle.h; path = "Core Data Models/Puzzle.h"; sourceTree = "<group>"; };
+		26938ACE1C0F3954007365F3 /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Puzzle.m; path = "Core Data Models/Puzzle.m"; sourceTree = "<group>"; };
+		26938ACF1C0F3954007365F3 /* Image+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Image+CoreDataProperties.h"; path = "Core Data Models/Image+CoreDataProperties.h"; sourceTree = "<group>"; };
+		26938AD01C0F3954007365F3 /* Image+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Image+CoreDataProperties.m"; path = "Core Data Models/Image+CoreDataProperties.m"; sourceTree = "<group>"; };
+		26938AD11C0F3954007365F3 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = "Core Data Models/Image.h"; sourceTree = "<group>"; };
+		26938AD21C0F3954007365F3 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = "Core Data Models/Image.m"; sourceTree = "<group>"; };
 		5A372A2F4DE5E4840BE8B600 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81687E859C7F6B81609394DE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		940005FE1BFF102E00D31956 /* StoryPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,15 +68,6 @@
 		942BB0C91C0EDB300024232F /* NewGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameController.m; sourceTree = "<group>"; };
 		9462D9711C0EC7D100D13927 /* RRGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRGroupView.h; path = View/RRGroupView.h; sourceTree = "<group>"; };
 		9462D9721C0EC7D100D13927 /* RRGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRGroupView.m; path = View/RRGroupView.m; sourceTree = "<group>"; };
-		9462D9751C0ECCF800D13927 /* GroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupView.h; sourceTree = "<group>"; };
-		9462D9761C0ECCF800D13927 /* GroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupView.m; sourceTree = "<group>"; };
-		9462D9771C0ECCF800D13927 /* PieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieceView.h; sourceTree = "<group>"; };
-		9462D9781C0ECCF800D13927 /* PieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieceView.m; sourceTree = "<group>"; };
-		9462D97B1C0ECDCF00D13927 /* Lattice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lattice.h; sourceTree = "<group>"; };
-		9462D97C1C0ECDCF00D13927 /* Lattice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lattice.m; sourceTree = "<group>"; };
-		9462D97E1C0ECE0F00D13927 /* PuzzleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleController.h; sourceTree = "<group>"; };
-		9462D97F1C0ECE0F00D13927 /* PuzzleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleController.m; sourceTree = "<group>"; };
-		9462D9801C0ECE0F00D13927 /* PuzzleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PuzzleController.xib; sourceTree = "<group>"; };
 		9462D9831C0ECE5500D13927 /* UIImage+CWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CWAdditions.h"; sourceTree = "<group>"; };
 		9462D9841C0ECE5500D13927 /* UIImage+CWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CWAdditions.m"; sourceTree = "<group>"; };
 		A28BCE2DE8A94F2D86035DD8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +85,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26938AC61C0F3505007365F3 /* Core Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				26938AC71C0F3954007365F3 /* Piece+CoreDataProperties.h */,
+				26938AC81C0F3954007365F3 /* Piece+CoreDataProperties.m */,
+				26938AC91C0F3954007365F3 /* Piece.h */,
+				26938ACA1C0F3954007365F3 /* Piece.m */,
+				26938ACB1C0F3954007365F3 /* Puzzle+CoreDataProperties.h */,
+				26938ACC1C0F3954007365F3 /* Puzzle+CoreDataProperties.m */,
+				26938ACD1C0F3954007365F3 /* Puzzle.h */,
+				26938ACE1C0F3954007365F3 /* Puzzle.m */,
+				26938ACF1C0F3954007365F3 /* Image+CoreDataProperties.h */,
+				26938AD01C0F3954007365F3 /* Image+CoreDataProperties.m */,
+				26938AD11C0F3954007365F3 /* Image.h */,
+				26938AD21C0F3954007365F3 /* Image.m */,
+				26938AC31C0F34F3007365F3 /* StoryPuzzle.xcdatamodeld */,
+			);
+			name = "Core Data Models";
+			sourceTree = "<group>";
+		};
 		73879BBD420847CB4889988D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,14 +140,14 @@
 				940006081BFF102E00D31956 /* RRMainViewController.m */,
 				942BB0C81C0EDB300024232F /* NewGameController.h */,
 				942BB0C91C0EDB300024232F /* NewGameController.m */,
+				26938AC01C0F3173007365F3 /* PuzzleViewController.h */,
+				26938AC11C0F3173007365F3 /* PuzzleViewController.m */,
 				9400060A1BFF102E00D31956 /* Main.storyboard */,
 				26561EFE1C033B1E00DC29C5 /* RRImageKit.h */,
 				26561EFF1C033B1E00DC29C5 /* RRImageKit.m */,
 				9462D9831C0ECE5500D13927 /* UIImage+CWAdditions.h */,
 				9462D9841C0ECE5500D13927 /* UIImage+CWAdditions.m */,
-				9462D97E1C0ECE0F00D13927 /* PuzzleController.h */,
-				9462D97F1C0ECE0F00D13927 /* PuzzleController.m */,
-				9462D9801C0ECE0F00D13927 /* PuzzleController.xib */,
+				26938AC61C0F3505007365F3 /* Core Data Models */,
 				9462D9741C0EC7EB00D13927 /* Views */,
 				9400060D1BFF102E00D31956 /* Assets.xcassets */,
 				9400060F1BFF102E00D31956 /* LaunchScreen.storyboard */,
@@ -139,12 +168,6 @@
 		9462D9741C0EC7EB00D13927 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9462D9751C0ECCF800D13927 /* GroupView.h */,
-				9462D9761C0ECCF800D13927 /* GroupView.m */,
-				9462D9771C0ECCF800D13927 /* PieceView.h */,
-				9462D9781C0ECCF800D13927 /* PieceView.m */,
-				9462D97B1C0ECDCF00D13927 /* Lattice.h */,
-				9462D97C1C0ECDCF00D13927 /* Lattice.m */,
 				940006181BFF17FF00D31956 /* RRImageView.h */,
 				940006191BFF17FF00D31956 /* RRImageView.m */,
 				2657CD291C0C842D00EB5E53 /* RRPieceView.h */,
@@ -227,7 +250,6 @@
 				940006111BFF102E00D31956 /* LaunchScreen.storyboard in Resources */,
 				9400060E1BFF102E00D31956 /* Assets.xcassets in Resources */,
 				9400060C1BFF102E00D31956 /* Main.storyboard in Resources */,
-				9462D9821C0ECE0F00D13927 /* PuzzleController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,17 +310,21 @@
 			files = (
 				940006091BFF102E00D31956 /* RRMainViewController.m in Sources */,
 				2657CD2B1C0C842D00EB5E53 /* RRPieceView.m in Sources */,
-				9462D97A1C0ECCF800D13927 /* PieceView.m in Sources */,
+				26938AD31C0F3954007365F3 /* Piece+CoreDataProperties.m in Sources */,
+				26938AD71C0F3954007365F3 /* Image+CoreDataProperties.m in Sources */,
+				26938AD51C0F3954007365F3 /* Puzzle+CoreDataProperties.m in Sources */,
 				26561F001C033B1E00DC29C5 /* RRImageKit.m in Sources */,
-				9462D9811C0ECE0F00D13927 /* PuzzleController.m in Sources */,
 				9462D9731C0EC7D100D13927 /* RRGroupView.m in Sources */,
+				26938AC21C0F3173007365F3 /* PuzzleViewController.m in Sources */,
 				940006061BFF102E00D31956 /* AppDelegate.m in Sources */,
 				9400061A1BFF17FF00D31956 /* RRImageView.m in Sources */,
-				9462D9791C0ECCF800D13927 /* GroupView.m in Sources */,
 				9462D9851C0ECE5500D13927 /* UIImage+CWAdditions.m in Sources */,
-				9462D97D1C0ECDCF00D13927 /* Lattice.m in Sources */,
+				26938AD81C0F3954007365F3 /* Image.m in Sources */,
 				940006031BFF102E00D31956 /* main.m in Sources */,
 				942BB0CA1C0EDB300024232F /* NewGameController.m in Sources */,
+				26938AD61C0F3954007365F3 /* Puzzle.m in Sources */,
+				26938AC51C0F34F3007365F3 /* StoryPuzzle.xcdatamodeld in Sources */,
+				26938AD41C0F3954007365F3 /* Piece.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +476,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		26938AC31C0F34F3007365F3 /* StoryPuzzle.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				26938AC41C0F34F3007365F3 /* StoryPuzzle.xcdatamodel */,
+			);
+			currentVersion = 26938AC41C0F34F3007365F3 /* StoryPuzzle.xcdatamodel */;
+			name = StoryPuzzle.xcdatamodeld;
+			path = "Core Data Models/StoryPuzzle.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 940005F61BFF102E00D31956 /* Project object */;
 }
