@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *rotations;
 @property (nullable, nonatomic, retain) NSNumber *score;
 @property (nullable, nonatomic, retain) Image *image;
-@property (nullable, nonatomic, retain) Piece *pieces;
+@property (nullable, nonatomic, retain) NSSet *pieces;
 
 @end
 

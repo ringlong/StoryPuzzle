@@ -20,6 +20,8 @@
 		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>

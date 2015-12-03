@@ -12,6 +12,7 @@
 #import "RRPieceView.h"
 #import "RRGroupView.h"
 #import "Puzzle.h"
+#import "Piece.h"
 #import "ReactiveCocoa.H"
 #import "RRToolkit.h"
 
@@ -23,7 +24,7 @@ static const NSInteger PieceSize = 75;
 static const CGFloat Padding = PieceSize * 0.15;
 static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 
-@interface PuzzleViewController ()
+@interface PuzzleViewController ()<RRPieceViewDelegate, RRPieceViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;
@@ -43,6 +44,8 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 @property (assign, nonatomic) NSInteger pieceNumber;
 @property (assign, nonatomic) NSInteger numberOfSquare;
 @property (assign, nonatomic) NSInteger firstPiecePlace;
+@property (assign, nonatomic) NSInteger missedPieces;
+@property (assign, nonatomic) NSInteger loadedPieces;
 
 @property (assign, nonatomic) NSTimeInterval elapsedTime;
 @property (assign, nonatomic) NSInteger score;
@@ -64,6 +67,7 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 - (void)createPieces;
 - (void)addAnothePieceToView;
 - (NSArray<UIImage *> *)splitImage:(UIImage *)image partSize:(CGFloat)partSize;
+- (Piece *)pieceOfCurrentPuzzle:(NSInteger)index;
 
 @end
 
@@ -73,10 +77,11 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    self.pieceNumber = 4;
+    
+    [RACObserve(self, score) subscribeNext:^(NSNumber *x) {
+        self.scoreLabel.text = x.stringValue;
+    }];
 }
 
 - (void)setPieceNumber:(NSInteger)pieceNumber {
@@ -89,6 +94,9 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 
 - (void)prepareForNewPuzzle {
     [self.view bringSubviewToFront:_latticeView];
+    
+    _missedPieces = 0;
+    _loadedPieces = 0;
     
     if (!_loadingGame) {
         _elapsedTime = 0.0;
@@ -125,6 +133,17 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 
 - (NSArray*)directionsUpdated_positions {
     return @[@(-1), @(3 * _pieceNumber), @1, @(-3 * _pieceNumber)];
+}
+
+- (Piece *)pieceOfCurrentPuzzle:(NSInteger)index {
+    for (Piece *piece in _puzzle.pieces) {
+        if (piece.number.integerValue == index) {
+            return piece;
+        }
+    }
+    
+    _missedPieces++;
+    return nil;
 }
 
 - (void)removeOldPieces {
@@ -184,10 +203,93 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
         self.image = [self.image imageCroppedToSquareWithSide:f];
         array = [NSMutableArray arrayWithArray:[self splitImage:self.image partSize:partSize]];
     }
+    
+    for (int i = 0; i < _pieceNumber; i++) {
+        for (int j = 0; j < _pieceNumber; j++) {
+            CGRect rect = CGRectMake(0, 0, shapeQuality * PieceSize, shapeQuality * PieceSize);
+            
+            if (_loadingGame) {
+                Piece *piece = [self pieceOfCurrentPuzzle:j + _pieceNumber * i];
+                if (piece) {
+                    RRPieceView *pieceView = [[RRPieceView alloc] initWithFrame:rect piece:piece];
+                    pieceView.delegate = self;
+                    pieceView.dataSource = self;
+                    pieceView.number = j + _pieceNumber * i;
+                    pieceView.size = PieceSize;
+                    pieceView.image = [UIImage imageWithData:piece.image.data];
+                    pieceView.neighbors = @[@(_numberOfSquare), @(_numberOfSquare), @(_numberOfSquare), @(_numberOfSquare)];
+                    [arrayPieces addObject:pieceView];
+                }
+            } else {
+                RRPieceView *pieceView = [[RRPieceView alloc] initWithFrame:rect];
+                pieceView.delegate = self;
+                pieceView.dataSource = self;
+                pieceView.image = array[j + _pieceNumber * i];
+                pieceView.number = j + _pieceNumber * i;
+                pieceView.size = PieceSize;
+                pieceView.position = -1;
+                pieceView.neighbors = @[@(_numberOfSquare), @(_numberOfSquare), @(_numberOfSquare), @(_numberOfSquare)];
+                
+                NSMutableArray *temp = [NSMutableArray arrayWithCapacity:4];
+                
+                for (int k = 0; k < 4; k++) {
+                    int e = arc4random_uniform(3) + 1;
+                    
+                    if (arc4random_uniform(2) > 0) {
+                        e *= -1;
+                    }
+                    [temp addObject:@(e)];
+                }
+                
+                if (i > 0) {
+                    NSInteger l = arrayPieces.count - _pieceNumber;
+                    NSInteger e = arrayPieces[l].edges[1].integerValue;
+                    [temp replaceObjectAtIndex:3 withObject:@(-e)];
+                }
+                
+                if (j > 0) {
+                    NSInteger e = arrayPieces.lastObject.edges[2].integerValue;
+                    [temp replaceObjectAtIndex:0 withObject:@(-e)];
+                }
+                
+                if (i == 0) {
+                    [temp replaceObjectAtIndex:3 withObject:@0];
+                }
+                
+                if (i == _pieceNumber - 1) {
+                    [temp replaceObjectAtIndex:1 withObject:@0];
+                }
+                
+                if (j == 0) {
+                    [temp replaceObjectAtIndex:0 withObject:@0];
+                }
+                
+                if (j == _pieceNumber - 1) {
+                    [temp replaceObjectAtIndex:2 withObject:@0];
+                }
+                
+                pieceView.edges = [NSArray arrayWithArray:temp];
+                [arrayPieces addObject:pieceView];
+            }
+            
+        }
+    }
+    
+    _pieces = [NSMutableArray arrayWithArray:arrayPieces];
+    _loadedPieces = 0;
 }
 
 - (NSArray<UIImage *> *)splitImage:(UIImage *)image partSize:(CGFloat)partSize {
-    return nil;
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:_numberOfSquare];
+    CGFloat padding = partSize * 0.15;
+    CGFloat left = partSize - 2 * padding;
+    for (int i = 0; i < _pieceNumber; i ++) {
+        for (int j = 0; j < _pieceNumber; j++) {
+            CGRect rect = CGRectMake(i * left - padding , j * left - padding, partSize, partSize);
+            [tempArray addObject:[image subimageWithRect:rect]];
+        }
+    }
+    return [NSArray arrayWithArray:tempArray];
 }
 
 #pragma mark - Public Method

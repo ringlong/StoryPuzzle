@@ -8,6 +8,7 @@
 
 #import "RRPieceView.h"
 #import "RRToolkit.h"
+#import "Piece.h"
 
 @interface RRPieceView ()<UIGestureRecognizerDelegate>
 
@@ -26,6 +27,18 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self configure];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame piece:(Piece *)piece {
+    if (self = [self initWithFrame:frame]) {
+        _isFree = piece.isFree.boolValue;
+        _position = piece.position.integerValue;
+        _angle = piece.angle.floatValue;
+        _moves = piece.moves.integerValue;
+        _edges = @[piece.edge0, piece.edge1, piece.edge2, piece.edge3];
+        self.transform = CGAffineTransformMakeRotation(piece.angle.floatValue);
     }
     return self;
 }

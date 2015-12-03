@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@class RRPieceView;
+@class RRPieceView, Piece;
 @protocol RRPieceViewDelegate <NSObject>
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
@@ -63,6 +63,7 @@
 @property (nonatomic) CGFloat padding;
 @property (nonatomic) CGFloat tempAngle;
 
+- (instancetype)initWithFrame:(CGRect)frame piece:(Piece *)piece;
 - (void)move:(UIPanGestureRecognizer *)gesture;
 - (void)rotate:(UIRotationGestureRecognizer *)gesture;
 - (void)rotateTap:(UITapGestureRecognizer *)gesture;
