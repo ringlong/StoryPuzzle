@@ -7,7 +7,10 @@
 //
 
 @import UIKit;
+@class Puzzle;
 
 @interface PuzzleViewController : UIViewController
+
+- (void)loadPuzzle:(Puzzle *)puzzle;
 
 @end

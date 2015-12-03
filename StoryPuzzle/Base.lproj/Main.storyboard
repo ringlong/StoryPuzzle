@@ -212,10 +212,10 @@
             </objects>
             <point key="canvasLocation" x="653.5" y="428.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Puzzle View Controller-->
         <scene sceneID="Wfv-Ph-eLx">
             <objects>
-                <viewController id="qli-Wq-Puj" sceneMemberID="viewController">
+                <viewController id="qli-Wq-Puj" customClass="PuzzleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6QM-Sz-rHW"/>
                         <viewControllerLayoutGuide type="bottom" id="M4n-c4-W9x"/>
@@ -233,7 +233,7 @@
                                 <rect key="frame" x="311" y="66" width="46" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iay-IM-wg5">
@@ -245,14 +245,14 @@
                                 <rect key="frame" x="20" y="66" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDw-Kd-MVB">
                                 <rect key="frame" x="166" y="32" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-EC-fKY">
@@ -268,10 +268,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="elapsedTimeLabel" destination="5KK-J9-TXS" id="7k6-DU-dzX"/>
+                        <outlet property="percentageLabel" destination="gtB-Vx-G6V" id="JX8-ee-gG0"/>
+                        <outlet property="scoreLabel" destination="iDw-Kd-MVB" id="P1x-qu-Gyv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9f-uj-0nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083.5" y="428.5"/>
+            <point key="canvasLocation" x="1153.5" y="428.5"/>
         </scene>
     </scenes>
 </document>

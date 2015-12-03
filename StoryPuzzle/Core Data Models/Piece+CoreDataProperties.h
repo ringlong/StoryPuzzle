@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *number;
 @property (nullable, nonatomic, retain) NSNumber *position;
 @property (nullable, nonatomic, retain) NSNumber *rotations;
-@property (nullable, nonatomic, retain) NSManagedObject *image;
-@property (nullable, nonatomic, retain) NSManagedObject *puzzle;
+@property (nullable, nonatomic, retain) Image *image;
+@property (nullable, nonatomic, retain) Puzzle *puzzle;
 
 @end
 

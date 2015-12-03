@@ -26,6 +26,7 @@
 		940006111BFF102E00D31956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9400060F1BFF102E00D31956 /* LaunchScreen.storyboard */; };
 		9400061A1BFF17FF00D31956 /* RRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940006191BFF17FF00D31956 /* RRImageView.m */; };
 		942BB0CA1C0EDB300024232F /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BB0C91C0EDB300024232F /* NewGameController.m */; };
+		942BB0CF1C0FDAB30024232F /* RRLaticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BB0CE1C0FDAB30024232F /* RRLaticeView.m */; };
 		9462D9731C0EC7D100D13927 /* RRGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9721C0EC7D100D13927 /* RRGroupView.m */; };
 		9462D9851C0ECE5500D13927 /* UIImage+CWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462D9841C0ECE5500D13927 /* UIImage+CWAdditions.m */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		940006191BFF17FF00D31956 /* RRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRImageView.m; path = View/RRImageView.m; sourceTree = "<group>"; };
 		942BB0C81C0EDB300024232F /* NewGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameController.h; sourceTree = "<group>"; };
 		942BB0C91C0EDB300024232F /* NewGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameController.m; sourceTree = "<group>"; };
+		942BB0CD1C0FDAB30024232F /* RRLaticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRLaticeView.h; path = View/RRLaticeView.h; sourceTree = "<group>"; };
+		942BB0CE1C0FDAB30024232F /* RRLaticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRLaticeView.m; path = View/RRLaticeView.m; sourceTree = "<group>"; };
 		9462D9711C0EC7D100D13927 /* RRGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRGroupView.h; path = View/RRGroupView.h; sourceTree = "<group>"; };
 		9462D9721C0EC7D100D13927 /* RRGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRGroupView.m; path = View/RRGroupView.m; sourceTree = "<group>"; };
 		9462D9831C0ECE5500D13927 /* UIImage+CWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CWAdditions.h"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				2657CD2A1C0C842D00EB5E53 /* RRPieceView.m */,
 				9462D9711C0EC7D100D13927 /* RRGroupView.h */,
 				9462D9721C0EC7D100D13927 /* RRGroupView.m */,
+				942BB0CD1C0FDAB30024232F /* RRLaticeView.h */,
+				942BB0CE1C0FDAB30024232F /* RRLaticeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			files = (
 				940006091BFF102E00D31956 /* RRMainViewController.m in Sources */,
 				2657CD2B1C0C842D00EB5E53 /* RRPieceView.m in Sources */,
+				942BB0CF1C0FDAB30024232F /* RRLaticeView.m in Sources */,
 				26938AD31C0F3954007365F3 /* Piece+CoreDataProperties.m in Sources */,
 				26938AD71C0F3954007365F3 /* Image+CoreDataProperties.m in Sources */,
 				26938AD51C0F3954007365F3 /* Puzzle+CoreDataProperties.m in Sources */,

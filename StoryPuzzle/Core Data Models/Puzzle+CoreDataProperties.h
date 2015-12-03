@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *pieceNumber;
 @property (nullable, nonatomic, retain) NSNumber *rotations;
 @property (nullable, nonatomic, retain) NSNumber *score;
-@property (nullable, nonatomic, retain) NSManagedObject *image;
+@property (nullable, nonatomic, retain) Image *image;
 @property (nullable, nonatomic, retain) Piece *pieces;
 
 @end

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Image.h"
 
-@class Piece;
+@class Piece, Image;
 
 NS_ASSUME_NONNULL_BEGIN
 
