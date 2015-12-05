@@ -15,7 +15,7 @@
         _count = count;
         _scale = 1;
         
-        CGFloat width = frame.size.width / count;
+        CGFloat width = frame.size.width / (count * 3);
         CGFloat padding = 2.0;
         
         NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:count^2];
@@ -25,12 +25,12 @@
                 CGRect rect = CGRectMake(i * width - padding, j * width - padding, width - 2 * padding, width - 2 * padding);
                 UIView *view = [[UIView alloc] initWithFrame:rect];
                 
-                view.backgroundColor = [UIColor blackColor];
+                view.backgroundColor = [UIColor whiteColor];
                 
                 if (i >= count && i < 2 * count && j >= count && j < 2 * count) {
-                    view.alpha = .2;
+                    view.alpha = .5;
                 } else {
-                    view.alpha = .05;
+                    view.alpha = .1;
                 }
                 
                 [tempArray addObject:view];
@@ -38,6 +38,11 @@
             }
         }
         _pieces = [NSArray arrayWithArray:tempArray];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+        pan.minimumNumberOfTouches = 1;
+        pan.maximumNumberOfTouches = 2;
+        [self addGestureRecognizer:pan];
     }
     return self;
 }
@@ -48,4 +53,11 @@
     }
     return _pieces[index];
 }
+
+- (void)pan:(UIPanGestureRecognizer *)gesture {
+    if ([_delegate respondsToSelector:@selector(latticeView:movedWithGestureRecognizer:)]) {
+        [_delegate latticeView:self movedWithGestureRecognizer:gesture];
+    }
+}
+
 @end

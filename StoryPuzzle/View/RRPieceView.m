@@ -385,9 +385,9 @@
     if (!self.userInteractionEnabled) {
         return;
     }
-    if ([_dataSource imageView].alpha == 1) {
+//    if ([_dataSource imageView].alpha == 1) {
 //        [_delegate toggleImageWithDuration:0.5];
-    }
+//    }
 //    CGPoint traslation = [gesture translationInView:self.superview];
     
     if (gesture.state == UIGestureRecognizerStateBegan) {

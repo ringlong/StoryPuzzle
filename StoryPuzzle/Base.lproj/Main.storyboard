@@ -255,13 +255,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-EC-fKY">
-                                <rect key="frame" x="0.0" y="95" width="375" height="375"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-LO-NHv">
+                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                                 <animations/>
-                            </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBq-dv-u6P">
-                                <rect key="frame" x="0.0" y="478" width="375" height="189"/>
-                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
                         <animations/>
@@ -269,6 +266,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="drawerView" destination="uJK-LO-NHv" id="oks-FG-fuP"/>
                         <outlet property="elapsedTimeLabel" destination="5KK-J9-TXS" id="7k6-DU-dzX"/>
                         <outlet property="percentageLabel" destination="gtB-Vx-G6V" id="JX8-ee-gG0"/>
                         <outlet property="scoreLabel" destination="iDw-Kd-MVB" id="P1x-qu-Gyv"/>

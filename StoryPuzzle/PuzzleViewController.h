@@ -11,6 +11,8 @@
 
 @interface PuzzleViewController : UIViewController
 
+@property (strong, nonatomic) UIImage *image;
+
 - (void)loadPuzzle:(Puzzle *)puzzle;
 
 @end

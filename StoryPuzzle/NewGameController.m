@@ -7,6 +7,7 @@
 //
 
 #import "NewGameController.h"
+#import "PuzzleViewController.h"
 
 static const NSInteger RRNewGameButtonTag = 30;
 
@@ -29,11 +30,20 @@ static const NSInteger RRNewGameButtonTag = 30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Wood"]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PuzzleViewController *destinationViewController = segue.destinationViewController;
+    destinationViewController.image = self.imageView.image;
 }
 
 #pragma mark - IBActions

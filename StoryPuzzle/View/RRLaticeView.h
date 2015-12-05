@@ -8,8 +8,16 @@
 
 @import UIKit;
 
+@class RRLaticeView;
+@protocol RRLaticeViewDelegate <NSObject>
+
+- (void)latticeView:(RRLaticeView *)latticeView movedWithGestureRecognizer:(UIPanGestureRecognizer *)gesure;
+
+@end
+
 @interface RRLaticeView : UIView
 
+@property (nonatomic, weak) id<RRLaticeViewDelegate> delegate;
 @property (nonatomic, strong) NSArray<UIView *> *pieces;
 @property (nonatomic, assign) CGFloat scale;
 @property (nonatomic, assign) NSInteger count;
