@@ -26,6 +26,7 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 
 @interface PuzzleViewController ()<RRPieceViewDelegate, RRPieceViewDataSource, RRLaticeViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *percentageLabel;
@@ -103,8 +104,6 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
 #pragma mark - Private Method
 
 - (void)prepareForNewPuzzle {
-    [self.view bringSubviewToFront:_latticeView];
-    
     _missedPieces = 0;
     _loadedPieces = 0;
     
@@ -139,6 +138,7 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
     [self.view addSubview:_latticeView];
     _latticeView.center = self.view.center;
 //    [self resetLatticePositionAndSizeWithDuration:0];
+    [self.view bringSubviewToFront:_infoView];
 }
 
 - (NSArray *)directionsUpdated_numbers {
@@ -383,6 +383,13 @@ static const CGFloat DrawerSize = PieceSize + 1.8 * Padding - 10;
         [self startNewGame];
     }
 }
+
+#pragma mark - IBActions
+
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - RRLaticeViewDelegate
 

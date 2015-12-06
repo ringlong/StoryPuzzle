@@ -46,6 +46,8 @@ static const NSInteger RRNewGameButtonTag = 30;
     destinationViewController.image = self.imageView.image;
 }
 
+- (IBAction)unwindSegue:(UIStoryboardSegue *)sender {}
+
 #pragma mark - IBActions
 
 - (IBAction)numberSelected:(UISlider *)sender {
